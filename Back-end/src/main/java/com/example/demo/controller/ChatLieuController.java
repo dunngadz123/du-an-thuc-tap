@@ -28,6 +28,7 @@ public class ChatLieuController {
 
     @GetMapping("/hienthi")
     public ResponseEntity<?> page(@RequestParam(value = "page", defaultValue = "0") Integer page) {
+
         return ResponseEntity.ok(chatLieuService.getAll(page));
     }
 
@@ -66,7 +67,8 @@ public class ChatLieuController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?>     detail(@PathVariable UUID id) {
-        return ResponseEntity.ok(chatLieuService.detail(id));
+        ChatLieu chatLieu = chatLieuService.detail(id);
+        return ResponseEntity.ok(chatLieu);
     }
 
 

@@ -48,7 +48,8 @@ public class LoaiSanPhamController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id) {
-        return ResponseEntity.ok(service.detail(id));
+        LoaiSanPham loaiSanPham = service.detail(id);
+        return ResponseEntity.ok(loaiSanPham);
     }
 
     @PutMapping("/update/{id}")

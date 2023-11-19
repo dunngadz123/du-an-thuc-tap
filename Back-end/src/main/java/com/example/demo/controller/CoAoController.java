@@ -30,6 +30,7 @@ public class CoAoController {
 
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll() {
+
         return ResponseEntity.ok(service.getAll());
     }
 
@@ -62,14 +63,14 @@ public class CoAoController {
     @PutMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id,
                                     @RequestBody CoAo coAo) {
-
         coAo.setId(id);
         return ResponseEntity.ok(service.delete(id));
     }
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id) {
-        return ResponseEntity.ok(service.detail(id));
+        CoAo coAo = service.detail(id);
+        return ResponseEntity.ok(coAo);
     }
 
 }

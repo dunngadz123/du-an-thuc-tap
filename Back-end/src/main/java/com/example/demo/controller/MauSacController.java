@@ -20,6 +20,7 @@ public class MauSacController {
 
     @GetMapping("hien-thi")
     public ResponseEntity<?> hienThi(){
+
         return ResponseEntity.ok(service.getAllMS());
     }
 

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -40,7 +41,9 @@ public class KichCoController {
 
     @GetMapping("/getAllchitietsp")
     public ResponseEntity<?> getAllVaiTro() {
-        return ResponseEntity.ok(chiTietSanPhamService.getAll());
+        List<ChiTietSanPham> list = chiTietSanPhamService.getAll();
+        return ResponseEntity.ok(list);
+        //return ResponseEntity.ok(chiTietSanPhamService.getAll());
     }
 
     @GetMapping("/hienthi")
@@ -78,7 +81,8 @@ public class KichCoController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id) {
-        return ResponseEntity.ok(service.detail(id));
+        KichCo kichCo = service.detail(id);
+        return ResponseEntity.ok(kichCo);
     }
 
 }

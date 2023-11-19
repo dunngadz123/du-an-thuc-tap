@@ -30,6 +30,7 @@ public class NhaSanXuatController {
 
     @GetMapping("/hien-thi")
     public ResponseEntity<?> getAll() {
+
         return ResponseEntity.ok(service.getAllNSX());
     }
 
@@ -55,7 +56,8 @@ public class NhaSanXuatController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id){
-        return ResponseEntity.ok(service.detail(id));
+        NhaSanXuat nsx = service.detail(id);
+        return ResponseEntity.ok(nsx);
     }
 
     @PutMapping("/update/{id}")
@@ -63,6 +65,7 @@ public class NhaSanXuatController {
         NhaSanXuat c = service.detail(id);
         nhaSanXuat.setId(id);
         nhaSanXuat.setMa(c.getMa());
+
         nhaSanXuat.setNgayTao(nhaSanXuat.getNgayTao());
         nhaSanXuat.setNgaySua(new Date());
         return ResponseEntity.ok(service.add(nhaSanXuat));
