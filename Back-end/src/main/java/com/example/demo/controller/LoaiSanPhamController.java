@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -22,7 +23,9 @@ public class LoaiSanPhamController {
 
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll() {
-        return ResponseEntity.ok(service.getAll());
+        List<LoaiSanPham> list = service.getAll();
+        return ResponseEntity.ok(list);
+//        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/getAllPages")

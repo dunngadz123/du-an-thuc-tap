@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -34,7 +35,10 @@ public class VaiTroController {
 
     @GetMapping("/getAll")
     public ResponseEntity<?> getAll() {
-        return ResponseEntity.ok(vaiTroService.getAll());
+        List<VaiTro> list = vaiTroService.getAll();
+        return ResponseEntity.ok(list);
+
+//        return ResponseEntity.ok(vaiTroService.getAll());
     }
 
     @PostMapping("/add")
@@ -59,7 +63,9 @@ public class VaiTroController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id) {
-        return ResponseEntity.ok(vaiTroService.detail(id));
+        VaiTro vaiTro = vaiTroService.detail(id);
+        return ResponseEntity.ok(vaiTro);
+//        return ResponseEntity.ok(vaiTroService.detail(id));
     }
 
     @GetMapping("/serach")

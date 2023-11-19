@@ -15,6 +15,7 @@ import java.util.UUID;
 @RequestMapping("/api/mau-sac/")
 @CrossOrigin(origins = "http://localhost:3000")
 public class MauSacController {
+
     @Autowired public
     MauSacServiceImpl service;
 
@@ -44,7 +45,10 @@ public class MauSacController {
     
     @GetMapping("detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id){
-        return ResponseEntity.ok(service.detail(id));
+
+        MauSac ms = service.detail(id);
+        return ResponseEntity.ok(ms);
+//        return ResponseEntity.ok(service.detail(id));
     }
 
     @PutMapping("update/{id}")

@@ -60,7 +60,9 @@ public class DiaChiController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable("id") UUID id) {
-        return ResponseEntity.ok(dcService.detail(id));
+        DiaChi diaChi = dcService.detail(id);
+        return ResponseEntity.ok(diaChi);
+//        return ResponseEntity.ok(dcService.detail(id));
     }
 
     @PutMapping("/update/{id}")

@@ -56,8 +56,9 @@ public class NhaSanXuatController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id){
-        NhaSanXuat nsx = service.detail(id);
-        return ResponseEntity.ok(nsx);
+
+        NhaSanXuat nhaSanXuat = service.detail(id);
+        return ResponseEntity.ok(nhaSanXuat);
     }
 
     @PutMapping("/update/{id}")

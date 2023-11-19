@@ -29,6 +29,7 @@ import java.util.UUID;
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/kich-co")
 public class KichCoController {
+
     @Autowired
     private ChiTietSanPhamService chiTietSanPhamService;
     @Autowired
@@ -41,8 +42,9 @@ public class KichCoController {
 
     @GetMapping("/getAllchitietsp")
     public ResponseEntity<?> getAllVaiTro() {
-        List<ChiTietSanPham> list = chiTietSanPhamService.getAll();
-        return ResponseEntity.ok(list);
+
+        List<ChiTietSanPham> listCTSP = chiTietSanPhamService.getAll();
+        return ResponseEntity.ok(listCTSP);
         //return ResponseEntity.ok(chiTietSanPhamService.getAll());
     }
 
@@ -81,8 +83,9 @@ public class KichCoController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id) {
-        KichCo kichCo = service.detail(id);
-        return ResponseEntity.ok(kichCo);
+
+        KichCo kc = service.detail(id);
+        return ResponseEntity.ok(kc);
     }
 
 }

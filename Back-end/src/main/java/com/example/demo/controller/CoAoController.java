@@ -32,10 +32,12 @@ public class CoAoController {
     public ResponseEntity<?> getAll() {
 
         return ResponseEntity.ok(service.getAll());
+
     }
 
     @GetMapping("/hienthi")
     public ResponseEntity<?> page(@RequestParam(value = "page", defaultValue = "0") Integer page) {
+
         return ResponseEntity.ok(service.fillAll(page));
     }
 
@@ -56,8 +58,10 @@ public class CoAoController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable UUID id, @RequestBody CoAo coAo) {
+
         coAo.setId(id);
         return ResponseEntity.ok(service.update(coAo));
+
     }
 
     @PutMapping("/delete/{id}")
@@ -69,8 +73,8 @@ public class CoAoController {
 
     @GetMapping("/detail/{id}")
     public ResponseEntity<?> detail(@PathVariable UUID id) {
-        CoAo coAo = service.detail(id);
-        return ResponseEntity.ok(coAo);
+        CoAo coAoD = service.detail(id);
+        return ResponseEntity.ok(coAoD);
     }
 
 }
