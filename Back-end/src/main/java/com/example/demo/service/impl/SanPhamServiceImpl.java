@@ -6,6 +6,7 @@ import com.example.demo.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,5 +23,10 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public SanPham detail(UUID id) {
         return repository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<SanPham> getAllActive() {
+        return repository.findAll().stream().filter(sanPham -> sanPham.getTrangThai() == 2).toList();
     }
 }
